@@ -1,5 +1,6 @@
 package net.craftions.bedwars.spawner;
 
+import net.craftions.bedwars.api.Config;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,4 +15,5 @@ public interface ISpawner {
 
     void spawn();
 
+    Config getConfig();
 }

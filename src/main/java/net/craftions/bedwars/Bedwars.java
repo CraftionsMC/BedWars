@@ -20,7 +20,7 @@ public final class Bedwars extends JavaPlugin {
         Logger.info("Loading BedWars v" + this.getDescription().getVersion() + "...");
         instance = this;
         SpawnerHandler.createTasks();
-
+        // TODO: Create Configs ["spawner-bronze", "spawner-iron", "spawner-gold"]
     }
 
     @Override

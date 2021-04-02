@@ -3,6 +3,7 @@
  */
 package net.craftions.bedwars.spawner;
 
+import net.craftions.bedwars.api.Config;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -38,5 +39,10 @@ public class GoldSpawner implements ISpawner {
     @Override
     public void spawn() {
         this.getSpawnerLocation().getWorld().dropItemNaturally(this.getSpawnerLocation(), this.getItemToSpawn());
+    }
+
+    @Override
+    public Config getConfig() {
+        return Config.getInstance("spawner-gold");
     }
 }
