@@ -12,4 +12,6 @@ public interface Spawner {
     int getSpawnStartDelay();
     int getSpawnIntervalDelay();
 
+    void spawn();
+
 }

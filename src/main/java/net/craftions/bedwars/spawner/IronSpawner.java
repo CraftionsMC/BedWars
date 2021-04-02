@@ -34,4 +34,9 @@ public class IronSpawner implements Spawner{
     public int getSpawnIntervalDelay() {
         return 15;
     }
+
+    @Override
+    public void spawn() {
+        this.getSpawnerLocation().getWorld().dropItemNaturally(this.getSpawnerLocation(), this.getItemToSpawn());
+    }
 }

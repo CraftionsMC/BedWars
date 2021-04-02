@@ -35,4 +35,9 @@ public class GoldSpawner implements Spawner{
     public int getSpawnIntervalDelay() {
         return 30 * 20;
     }
+
+    @Override
+    public void spawn() {
+        this.getSpawnerLocation().getWorld().dropItemNaturally(this.getSpawnerLocation(), this.getItemToSpawn());
+    }
 }

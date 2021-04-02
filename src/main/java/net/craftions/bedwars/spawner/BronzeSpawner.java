@@ -34,4 +34,9 @@ public class BronzeSpawner implements Spawner{
     public int getSpawnIntervalDelay() {
         return 1;
     }
+
+    @Override
+    public void spawn() {
+        this.getSpawnerLocation().getWorld().dropItemNaturally(this.getSpawnerLocation(), this.getItemToSpawn());
+    }
 }
