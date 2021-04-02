@@ -27,12 +27,12 @@ public class BronzeSpawner implements Spawner{
 
     @Override
     public int getSpawnStartDelay() {
-        return 1;
+        return 1 * 20;
     }
 
     @Override
     public int getSpawnIntervalDelay() {
-        return 1;
+        return 1 * 20;
     }
 
     @Override

@@ -27,12 +27,12 @@ public class IronSpawner implements Spawner{
 
     @Override
     public int getSpawnStartDelay() {
-        return 15;
+        return 15 * 20;
     }
 
     @Override
     public int getSpawnIntervalDelay() {
-        return 15;
+        return 15 * 20;
     }
 
     @Override
