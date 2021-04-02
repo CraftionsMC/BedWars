@@ -6,3 +6,6 @@ commands:
   setspawner:
     permission: bedwars.command.setspawner
     usage: /setspawner <type>
+  setspawn:
+    permission: bedwars.command.setspawn
+    usage: /setspawn

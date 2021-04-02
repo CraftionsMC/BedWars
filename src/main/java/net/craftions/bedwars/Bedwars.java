@@ -1,6 +1,8 @@
 package net.craftions.bedwars;
 
 import net.craftions.bedwars.api.Config;
+import net.craftions.bedwars.api.NetUtils;
+import net.craftions.bedwars.commands.CommandSetSpawn;
 import net.craftions.bedwars.commands.CommandSetSpawner;
 import net.craftions.bedwars.commands.TabCompleterSetSpawner;
 import net.craftions.bedwars.event.EventPlayerJoin;
@@ -33,6 +35,19 @@ public final class Bedwars extends JavaPlugin {
         instance = this;
         SpawnerHandler.createTasks();
         // TODO: Create Configs ["spawner-bronze", "spawner-iron", "spawner-gold"]
+        File root = new File("./plugins/Bedwars");
+        File spawnerRoot = new File("./plugins/Bedwars/spawner");
+        if(!root.isDirectory()){root.mkdirs();}
+        if(!spawnerRoot.isDirectory()){spawnerRoot.mkdirs();}
+        File bronzeConf = new File("./plugins/Bedwars/spawner/bronze.yml");
+        File ironConf = new File("./plugins/Bedwars/spawner/iron.yml");
+        File goldConf = new File("./plugins/Bedwars/spawner/gold.yml");
+        if(!bronzeConf.exists()){NetUtils.download("https://cdn.craftions.net/plugins/Bedwars/default/spawner/bronze.yml", bronzeConf);}
+        if(!ironConf.exists()){NetUtils.download("https://cdn.craftions.net/plugins/Bedwars/default/spawner/iron.yml", ironConf);}
+        if(!goldConf.exists()){NetUtils.download("https://cdn.craftions.net/plugins/Bedwars/default/spawner/gold.yml", goldConf);}
+        File locationConf = new File("./plugins/Bedwars/locations.yml");
+        if(!locationConf.exists()){NetUtils.download("https://cdn.craftions.net/plugins/Bedwars/default/locations.yml", locationConf);}
+
         new Config(new File("./plugins/Bedwars/spawner/bronze.yml"), "spawner-bronze");
         new Config(new File("./plugins/Bedwars/spawner/iron.yml"), "spawner-iron");
         new Config(new File("./plugins/Bedwars/spawner/gold.yml"), "spawner-gold");
@@ -40,6 +55,7 @@ public final class Bedwars extends JavaPlugin {
 
         Bukkit.getPluginCommand("setspawner").setExecutor(new CommandSetSpawner());
         Bukkit.getPluginCommand("setspawner").setTabCompleter(new TabCompleterSetSpawner());
+        Bukkit.getPluginCommand("setspawn").setExecutor(new CommandSetSpawn());
 
         Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
 
