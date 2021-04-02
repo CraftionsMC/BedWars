@@ -28,7 +28,7 @@ public class CommandSetSpawner implements CommandExecutor {
                 }else {
                     spawner.getConfig().set("spawner." + UUID.randomUUID() + ".spawn", spawner.getSpawnerLocation());
                     spawner.getConfig().reload(true);
-                    Logger.pInfo("§aThe spawn was set.", p);
+                    Logger.pInfo("§aThe spawner was set.", p);
                 }
             }
         }else {

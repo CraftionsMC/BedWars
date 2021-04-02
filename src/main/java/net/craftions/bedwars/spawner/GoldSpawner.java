@@ -38,7 +38,9 @@ public class GoldSpawner implements ISpawner {
 
     @Override
     public void spawn() {
-        this.getSpawnerLocation().getWorld().dropItemNaturally(this.getSpawnerLocation(), this.getItemToSpawn());
+        try {
+            this.getSpawnerLocation().getWorld().dropItem(this.getSpawnerLocation(), this.getItemToSpawn());
+        } catch (Exception ex) {}
     }
 
     @Override
