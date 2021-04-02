@@ -16,7 +16,7 @@ public final class Bedwars extends JavaPlugin {
 
     public static String prefix = "[§bBedWars§r] ";
 
-    public static Boolean enalbeGold        = true;
+    public static Boolean enableGold        = true;
     public static Boolean enableIron        = true;
     public static Boolean enableBronze      = true;
 

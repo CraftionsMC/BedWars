@@ -21,7 +21,7 @@ public class SpawnerHandler {
                     createTaskFinal(s);
                 }
             }else if(s instanceof GoldSpawner) {
-                if (Bedwars.enalbeGold) {
+                if (Bedwars.enableGold) {
                     createTaskFinal(s);
                 }
             }
