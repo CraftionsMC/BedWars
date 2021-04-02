@@ -9,3 +9,6 @@ commands:
   setspawn:
     permission: bedwars.command.setspawn
     usage: /setspawn
+  spawn:
+    permission: bedwars.command.spawn
+    usage: /spawn

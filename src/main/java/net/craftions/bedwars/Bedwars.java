@@ -4,6 +4,7 @@ import net.craftions.bedwars.api.Config;
 import net.craftions.bedwars.api.NetUtils;
 import net.craftions.bedwars.commands.CommandSetSpawn;
 import net.craftions.bedwars.commands.CommandSetSpawner;
+import net.craftions.bedwars.commands.CommandSpawn;
 import net.craftions.bedwars.commands.TabCompleterSetSpawner;
 import net.craftions.bedwars.event.EventPlayerJoin;
 import net.craftions.bedwars.logger.Logger;
@@ -34,7 +35,6 @@ public final class Bedwars extends JavaPlugin {
         Logger.info("Loading BedWars v" + this.getDescription().getVersion() + "...");
         instance = this;
         SpawnerHandler.createTasks();
-        // TODO: Create Configs ["spawner-bronze", "spawner-iron", "spawner-gold"]
         File root = new File("./plugins/Bedwars");
         File spawnerRoot = new File("./plugins/Bedwars/spawner");
         if(!root.isDirectory()){root.mkdirs();}
@@ -56,6 +56,7 @@ public final class Bedwars extends JavaPlugin {
         Bukkit.getPluginCommand("setspawner").setExecutor(new CommandSetSpawner());
         Bukkit.getPluginCommand("setspawner").setTabCompleter(new TabCompleterSetSpawner());
         Bukkit.getPluginCommand("setspawn").setExecutor(new CommandSetSpawn());
+        Bukkit.getPluginCommand("spawn").setExecutor(new CommandSpawn());
 
         Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
 
