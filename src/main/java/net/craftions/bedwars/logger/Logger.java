@@ -4,6 +4,7 @@
 package net.craftions.bedwars.logger;
 
 import net.craftions.bedwars.Bedwars;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -22,6 +23,10 @@ public class Logger {
         p.sendMessage(Bedwars.prefix + ChatColor.WHITE + msg);
     }
 
+    public static void bInfo(String msg){
+        Bukkit.broadcastMessage(Bedwars.prefix + ChatColor.WHITE + msg);
+    }
+
     public static void warning(String msg){
         if(allowWarnings)
             System.err.println(Bedwars.prefix + ChatColor.YELLOW + msg);
@@ -29,6 +34,10 @@ public class Logger {
 
     public static void pWarning(String msg, Player p){
         p.sendMessage(Bedwars.prefix + ChatColor.YELLOW + msg);
+    }
+
+    public static void bWarning(String msg){
+        Bukkit.broadcastMessage(Bedwars.prefix + ChatColor.YELLOW + msg);
     }
 
     public static void error(String msg){
@@ -39,4 +48,10 @@ public class Logger {
     public static void pError(String msg, Player p){
         p.sendMessage(Bedwars.prefix + ChatColor.RED + msg);
     }
+
+
+    public static void bError(String msg){
+        Bukkit.broadcastMessage(Bedwars.prefix + ChatColor.RED + msg);
+    }
+
 }

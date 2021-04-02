@@ -3,6 +3,7 @@ package net.craftions.bedwars;
 import net.craftions.bedwars.api.Config;
 import net.craftions.bedwars.commands.CommandSetSpawner;
 import net.craftions.bedwars.commands.TabCompleterSetSpawner;
+import net.craftions.bedwars.event.EventPlayerJoin;
 import net.craftions.bedwars.logger.Logger;
 import net.craftions.bedwars.spawner.ISpawner;
 import net.craftions.bedwars.spawner.SpawnerHandler;
@@ -14,15 +15,17 @@ import java.util.ArrayList;
 
 public final class Bedwars extends JavaPlugin {
 
-    public static String prefix = "[§bBedWars§r] ";
+    public static String prefix                     = "[§bBedWars§r] ";
 
-    public static Boolean enableGold        = true;
-    public static Boolean enableIron        = true;
-    public static Boolean enableBronze      = true;
+    public static Boolean enableGold                = true;
+    public static Boolean enableIron                = true;
+    public static Boolean enableBronze              = true;
 
+    public static Boolean isRunning                 = false;
+    public static Boolean isStarting                = false;
 
     protected static Bedwars instance;
-    public static ArrayList<ISpawner> spawners = new ArrayList<>();
+    public static ArrayList<ISpawner> spawners      = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -33,9 +36,12 @@ public final class Bedwars extends JavaPlugin {
         new Config(new File("./plugins/Bedwars/spawner/bronze.yml"), "spawner-bronze");
         new Config(new File("./plugins/Bedwars/spawner/iron.yml"), "spawner-iron");
         new Config(new File("./plugins/Bedwars/spawner/gold.yml"), "spawner-gold");
+        new Config(new File("./plugins/Bedwars/locations.yml"), "locations");
 
-        getCommand("setspawner").setExecutor(new CommandSetSpawner());
-        getCommand("setspawner").setTabCompleter(new TabCompleterSetSpawner());
+        Bukkit.getPluginCommand("setspawner").setExecutor(new CommandSetSpawner());
+        Bukkit.getPluginCommand("setspawner").setTabCompleter(new TabCompleterSetSpawner());
+
+        Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
 
         SpawnerHandler.createSpawner();
         SpawnerHandler.createTasks();
@@ -52,5 +58,28 @@ public final class Bedwars extends JavaPlugin {
 
     public static Bedwars getInstance() {
         return instance;
+    }
+
+    public static class GameHandler {
+
+        public static void start(Boolean force){
+            if(force){
+
+            }else {
+                if(checkStartAllowed()){
+
+                }else {
+
+                }
+            }
+        }
+
+        private static void startFinal(){
+
+        }
+
+        public static Boolean checkStartAllowed(){
+            return false;
+        }
     }
 }
