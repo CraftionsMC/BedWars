@@ -1,5 +1,6 @@
 package net.craftions.bedwars;
 
+import net.craftions.bedwars.logger.Logger;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Bedwars extends JavaPlugin {
@@ -8,6 +9,7 @@ public final class Bedwars extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Logger.info("Loading BedWars v" + this.getDescription().getVersion() + "...");
 
     }
 
