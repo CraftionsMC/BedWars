@@ -12,3 +12,6 @@ commands:
   spawn:
     permission: bedwars.command.spawn
     usage: /spawn
+  start:
+    permission: bedwars.command.start
+    usage: /start

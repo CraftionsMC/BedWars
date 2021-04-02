@@ -2,15 +2,13 @@ package net.craftions.bedwars;
 
 import net.craftions.bedwars.api.Config;
 import net.craftions.bedwars.api.NetUtils;
-import net.craftions.bedwars.commands.CommandSetSpawn;
-import net.craftions.bedwars.commands.CommandSetSpawner;
-import net.craftions.bedwars.commands.CommandSpawn;
-import net.craftions.bedwars.commands.TabCompleterSetSpawner;
+import net.craftions.bedwars.commands.*;
 import net.craftions.bedwars.event.EventPlayerJoin;
 import net.craftions.bedwars.logger.Logger;
 import net.craftions.bedwars.spawner.ISpawner;
 import net.craftions.bedwars.spawner.SpawnerHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.block.data.type.Bed;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -23,6 +21,8 @@ public final class Bedwars extends JavaPlugin {
     public static Boolean enableGold                = true;
     public static Boolean enableIron                = true;
     public static Boolean enableBronze              = true;
+
+    public static Integer MIN_PLAYERS               = 2;
 
     public static Boolean isRunning                 = false;
     public static Boolean isStarting                = false;
@@ -57,6 +57,7 @@ public final class Bedwars extends JavaPlugin {
         Bukkit.getPluginCommand("setspawner").setTabCompleter(new TabCompleterSetSpawner());
         Bukkit.getPluginCommand("setspawn").setExecutor(new CommandSetSpawn());
         Bukkit.getPluginCommand("spawn").setExecutor(new CommandSpawn());
+        Bukkit.getPluginCommand("start").setExecutor(new CommandStart());
 
         Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
 
@@ -81,22 +82,26 @@ public final class Bedwars extends JavaPlugin {
 
         public static void start(Boolean force){
             if(force){
-
+                startFinal();
             }else {
                 if(checkStartAllowed()){
-
+                    startFinal();
                 }else {
-
+                    Logger.bError("Waiting for more players...");
                 }
             }
         }
 
         private static void startFinal(){
-
+            Logger.bInfo("The game starts...");
         }
 
         public static Boolean checkStartAllowed(){
-            return false;
+            if(!Bedwars.isStarting && !Bedwars.isRunning && Bukkit.getOnlinePlayers().size() >= Bedwars.MIN_PLAYERS){
+                return true;
+            }else {
+                return false;
+            }
         }
     }
 }
