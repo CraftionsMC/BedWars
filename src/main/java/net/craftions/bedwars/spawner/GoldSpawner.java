@@ -6,9 +6,8 @@ package net.craftions.bedwars.spawner;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
-public class GoldSpawner implements Spawner{
+public class GoldSpawner implements ISpawner {
 
     private Location spawnLocation;
 

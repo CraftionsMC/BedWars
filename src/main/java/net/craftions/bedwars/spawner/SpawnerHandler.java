@@ -9,7 +9,7 @@ import org.bukkit.Bukkit;
 public class SpawnerHandler {
 
     public static void createTasks() {
-        for(Spawner s : Bedwars.spawners){
+        for(ISpawner s : Bedwars.spawners){
             Bukkit.getScheduler().scheduleSyncRepeatingTask(Bedwars.getInstance(), new Runnable() {
                 @Override
                 public void run() {

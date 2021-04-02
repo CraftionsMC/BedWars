@@ -3,7 +3,7 @@ package net.craftions.bedwars.spawner;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
-public interface Spawner {
+public interface ISpawner {
 
     Location getSpawnerLocation();
 

@@ -7,7 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class BronzeSpawner implements Spawner{
+public class BronzeSpawner implements ISpawner {
 
     private Location spawnLocation;
 

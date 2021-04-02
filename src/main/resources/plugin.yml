@@ -2,3 +2,7 @@ name: Bedwars
 version: ${project.version}
 main: net.craftions.bedwars.Bedwars
 api-version: 1.16
+commands:
+  setspawner:
+    permission: bedwars.command.setspawner
+    usage: /setspawner <type>

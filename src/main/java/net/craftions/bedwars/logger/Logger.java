@@ -5,18 +5,38 @@ package net.craftions.bedwars.logger;
 
 import net.craftions.bedwars.Bedwars;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 public class Logger {
 
+    public static Boolean allowInfos         = true;
+    public static Boolean allowWarnings      = true;
+    public static Boolean allowErrors        = true;
+
     public static void info(String msg){
-        System.err.println(Bedwars.prefix + ChatColor.WHITE + msg);
+        if(allowInfos)
+            System.err.println(Bedwars.prefix + ChatColor.WHITE + msg);
+    }
+
+    public static void pInfo(String msg, Player p){
+        p.sendMessage(Bedwars.prefix + ChatColor.WHITE + msg);
     }
 
     public static void warning(String msg){
-        System.err.println(Bedwars.prefix + ChatColor.YELLOW + msg);
+        if(allowWarnings)
+            System.err.println(Bedwars.prefix + ChatColor.YELLOW + msg);
+    }
+
+    public static void pWarning(String msg, Player p){
+        p.sendMessage(Bedwars.prefix + ChatColor.YELLOW + msg);
     }
 
     public static void error(String msg){
-        System.err.println(Bedwars.prefix + ChatColor.RED + msg);
+        if(allowErrors)
+            System.err.println(Bedwars.prefix + ChatColor.RED + msg);
+    }
+
+    public static void pError(String msg, Player p){
+        p.sendMessage(Bedwars.prefix + ChatColor.RED + msg);
     }
 }
