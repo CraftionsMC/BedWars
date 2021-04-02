@@ -2,6 +2,7 @@ package net.craftions.bedwars;
 
 import net.craftions.bedwars.api.Config;
 import net.craftions.bedwars.commands.CommandSetSpawner;
+import net.craftions.bedwars.commands.TabCompleterSetSpawner;
 import net.craftions.bedwars.logger.Logger;
 import net.craftions.bedwars.spawner.ISpawner;
 import net.craftions.bedwars.spawner.SpawnerHandler;
@@ -14,6 +15,11 @@ import java.util.ArrayList;
 public final class Bedwars extends JavaPlugin {
 
     public static String prefix = "[§bBedWars§r] ";
+
+    public static Boolean enalbeGold        = true;
+    public static Boolean enableIron        = true;
+    public static Boolean enableBronze      = true;
+
 
     protected static Bedwars instance;
     public static ArrayList<ISpawner> spawners = new ArrayList<>();
@@ -29,6 +35,7 @@ public final class Bedwars extends JavaPlugin {
         new Config(new File("./plugins/Bedwars/spawner/gold.yml"), "spawner-gold");
 
         getCommand("setspawner").setExecutor(new CommandSetSpawner());
+        getCommand("setspawner").setTabCompleter(new TabCompleterSetSpawner());
 
         SpawnerHandler.createSpawner();
         SpawnerHandler.createTasks();

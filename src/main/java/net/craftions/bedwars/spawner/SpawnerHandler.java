@@ -12,13 +12,19 @@ public class SpawnerHandler {
 
     public static void createTasks() {
         for(ISpawner s : Bedwars.spawners){
-            System.out.println("0");
-            Bukkit.getScheduler().scheduleSyncRepeatingTask(Bedwars.getInstance(), new Runnable() {
-                @Override
-                public void run() {
-                    s.spawn();
+            if(s instanceof BronzeSpawner){
+                if(Bedwars.enableBronze){
+                    createTaskFinal(s);
                 }
-            }, s.getSpawnStartDelay(), s.getSpawnIntervalDelay());
+            }else if(s instanceof IronSpawner) {
+                if (Bedwars.enableIron) {
+                    createTaskFinal(s);
+                }
+            }else if(s instanceof GoldSpawner) {
+                if (Bedwars.enalbeGold) {
+                    createTaskFinal(s);
+                }
+            }
         }
     }
 
@@ -32,5 +38,14 @@ public class SpawnerHandler {
         for(String s : Config.getInstance("spawner-gold").getAll("spawner", true)){
             Bedwars.spawners.add(new GoldSpawner((Location) Config.getInstance("spawner-gold").get("spawner." + s + ".spawn")));
         }
+    }
+
+    private static void createTaskFinal(ISpawner s){
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Bedwars.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                s.spawn();
+            }
+        }, s.getSpawnStartDelay(), s.getSpawnIntervalDelay());
     }
 }
