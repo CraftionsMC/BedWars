@@ -9,10 +9,12 @@ import net.craftions.bedwars.spawner.ISpawner;
 import net.craftions.bedwars.spawner.SpawnerHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.block.data.type.Bed;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public final class Bedwars extends JavaPlugin {
 
@@ -23,9 +25,12 @@ public final class Bedwars extends JavaPlugin {
     public static Boolean enableBronze              = true;
 
     public static Integer MIN_PLAYERS               = 2;
+    public static Integer TEAM_SIZE                 = 2;
 
     public static Boolean isRunning                 = false;
     public static Boolean isStarting                = false;
+
+    public static HashMap<Player, Integer> teams    = new HashMap<>();
 
     protected static Bedwars instance;
     public static ArrayList<ISpawner> spawners      = new ArrayList<>();
@@ -94,6 +99,11 @@ public final class Bedwars extends JavaPlugin {
 
         private static void startFinal(){
             Logger.bInfo("The game starts...");
+            int currentTS = 0;
+            int currentTeam = 0;
+            for(Player p : Bukkit.getOnlinePlayers()){
+
+            }
         }
 
         public static Boolean checkStartAllowed(){
